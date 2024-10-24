@@ -1,0 +1,14 @@
+plugins {
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.ksp)
+}
+
+dependencies {
+    api libs.okhttp
+
+    implementation platform(libs.okhttp.bom)
+    implementation libs.okhttp.logging.interceptor
+    implementation libs.kotlin.inject.runtime
+
+    ksp libs.kotlin.inject.compiler
+}

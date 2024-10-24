@@ -11,11 +11,17 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/apis" />
             <option value="$PROJECT_DIR$/apis/github" />
+            <option value="$PROJECT_DIR$/apis/github/api" />
+            <option value="$PROJECT_DIR$/apis/github/di" />
             <option value="$PROJECT_DIR$/apis/github/internal" />
-            <option value="$PROJECT_DIR$/apis/github/models" />
+            <option value="$PROJECT_DIR$/services" />
+            <option value="$PROJECT_DIR$/services/moshi" />
+            <option value="$PROJECT_DIR$/services/okhttp" />
+            <option value="$PROJECT_DIR$/services/retrofit" />
           </set>
         </option>
       </GradleProjectSettings>
     </option>
+    <option name="offlineMode" value="true" />
   </component>
 </project>

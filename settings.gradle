@@ -1,8 +1,29 @@
-plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
 }
+
+plugins {
+    id('org.gradle.toolchains.foojay-resolver-convention') version '0.8.0'
+    id('com.autonomousapps.build-health') version '2.2.0'
+    id('org.jetbrains.kotlin.jvm') version '2.0.21' apply false
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+    }
+}
+
 rootProject.name = 'github-workflow-otel'
 
 include('apis:github')
-include('apis:github:models')
+include('apis:github:api')
+include('apis:github:di')
 include('apis:github:internal')
+include('services:retrofit')
+include('services:okhttp')
+include('services:moshi')

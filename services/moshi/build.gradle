@@ -1,0 +1,13 @@
+plugins {
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.ksp)
+}
+
+dependencies {
+    api libs.retrofit
+    api libs.retrofit.moshi
+
+    implementation libs.kotlin.inject.runtime
+
+    ksp libs.kotlin.inject.compiler
+}

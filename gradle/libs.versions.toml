@@ -10,6 +10,8 @@ okhttp = '5.0.0-alpha.14'
 junit-jupiter = '5.8.1'
 gmazzo-buildconfig = '5.5.0'
 kotest = '5.9.0'
+build-health = '2.2.0'
+foojay-resolver = '0.8.0'
 
 [libraries]
 moshi-kotlin = { module = 'com.squareup.moshi:moshi-kotlin', version.ref = 'moshi' }
@@ -32,3 +34,5 @@ kotest-assertions = { module = 'io.kotest:kotest-assertions-core', version.ref =
 kotlin-ksp = { id = 'com.google.devtools.ksp', version.ref = 'kotlin-ksp' }
 kotlin-jvm = { id = 'org.jetbrains.kotlin.jvm', version.ref = 'kotlin' }
 gmazzo-build-config = { id = 'com.github.gmazzo.buildconfig', version.ref = 'gmazzo-buildconfig' }
+build-health = { id = 'com.autonomousapps.build-health', version.ref = 'build-health' }
+foojay-resolver = { id = 'org.gradle.toolchains.foojay-resolver-convention', version.ref = 'foojay-resolver' }

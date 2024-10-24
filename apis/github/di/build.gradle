@@ -1,0 +1,18 @@
+plugins {
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.ksp)
+}
+
+kotlin {
+    explicitApi()
+}
+
+dependencies {
+    api project(':services:retrofit')
+
+    implementation project(':apis:github:internal')
+
+    implementation libs.kotlin.inject.runtime
+
+    ksp libs.kotlin.inject.compiler
+}

@@ -2,20 +2,18 @@ package uk.co.jordanterry.otel.github.api
 
 import retrofit2.http.GET
 import retrofit2.http.Path
-import uk.co.jordanterry.otel.github.api.dtos.WorkflowRun
-import uk.co.jordanterry.otel.github.models.OwnerRepo
-import uk.co.jordanterry.otel.github.models.Run
+import uk.co.jordanterry.otel.github.api.dtos.WorkflowRunDto
 
-internal interface GithubActionsService {
+public interface GithubActionsService {
 
     @GET("repos/{ownerRepo}/actions/runs/{run}")
-    suspend fun run(
+    public suspend fun run(
         @Path("ownerRepo", encoded = true) ownerRepo: OwnerRepo,
         @Path("run") run: Run
-    ): WorkflowRun
+    ): WorkflowRunDto
 
     @GET("repos/{ownerRepo}/actions/runs")
-    suspend fun runsForRepository(
+    public suspend fun runsForRepository(
         @Path("ownerRepo", encoded = true) ownerRepo: OwnerRepo,
-    ): WorkflowRun
+    ): WorkflowRunDto
 }
