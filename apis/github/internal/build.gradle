@@ -1,0 +1,48 @@
+plugins {
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.gmazzo.build.config)
+}
+
+group = 'uk.co.jordanterry'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+buildConfig {
+    buildConfigField(String, 'GITHUB_API_KEY', providers.environmentVariable('GITHUB_API_KEY'))
+}
+
+dependencies {
+    api(project(':apis:github:models'))
+
+    implementation libs.retrofit
+    implementation libs.retrofit.moshi
+    implementation libs.moshi.kotlin
+    implementation libs.kotlinx.coroutines
+    implementation platform(libs.okhttp.bom)
+    implementation libs.okhttp
+    implementation libs.okhttp.logging.interceptor
+    implementation libs.kotlin.inject.runtime
+
+    ksp libs.kotlin.inject.compiler
+    ksp libs.moshi.kotlin.codegen
+
+    testImplementation libs.kotlinx.coroutines.test
+    testImplementation libs.junit5.jupiter.api
+    testImplementation libs.okhttp.mockwebserver.junit5
+    testImplementation libs.kotest.assertions
+
+    testRuntimeOnly libs.junit5.jupiter.runtime
+}
+
+test {
+    useJUnitPlatform()
+}
+
+kotlin {
+    jvmToolchain(21)
+    explicitApi()
+}
