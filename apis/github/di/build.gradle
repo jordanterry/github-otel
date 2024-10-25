@@ -9,10 +9,17 @@ kotlin {
 
 dependencies {
     api project(':services:retrofit')
+    api project(':apis:github:internal')
+    api project(':apis:github:api')
+    api platform(libs.okhttp.bom)
+    api libs.okhttp
 
-    implementation project(':apis:github:internal')
+    implementation project(':services:okhttp')
+    implementation project(':services:kotlinx-serialization')
 
+    implementation libs.retrofit
     implementation libs.kotlin.inject.runtime
+    implementation libs.kotlin.serialisation.json
 
     ksp libs.kotlin.inject.compiler
 }

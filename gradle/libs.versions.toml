@@ -15,6 +15,7 @@ foojay-resolver = '0.8.0'
 kotlinx-serialization = '1.7.3'
 
 [libraries]
+moshi = { module = 'com.squareup.moshi:moshi', version.ref = 'moshi' }
 moshi-kotlin = { module = 'com.squareup.moshi:moshi-kotlin', version.ref = 'moshi' }
 moshi-kotlin-codegen = { module = 'com.squareup.moshi:moshi-kotlin-codegen', version.ref = 'moshi' }
 retrofit = { module = 'com.squareup.retrofit2:retrofit', version.ref = 'retrofit' }
@@ -26,12 +27,15 @@ kotlinx-coroutines = { module = 'org.jetbrains.kotlinx:kotlinx-coroutines-core',
 okhttp-bom = { module = 'com.squareup.okhttp3:okhttp-bom', version.ref = 'okhttp' }
 okhttp = { module = 'com.squareup.okhttp3:okhttp' }
 okhttp-logging-interceptor = { module = 'com.squareup.okhttp3:logging-interceptor' }
+okhttp-mockwebserver = { module = 'com.squareup.okhttp3:mockwebserver3', version.ref = 'okhttp' }
 okhttp-mockwebserver-junit5 = { module = 'com.squareup.okhttp3:mockwebserver3-junit5', version.ref = 'okhttp' }
 kotlinx-coroutines-test = { module = 'org.jetbrains.kotlinx:kotlinx-coroutines-test', version.ref = 'kotlinx-coroutines-test' }
 junit5-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api', version.ref = 'junit-jupiter' }
 junit5-jupiter-runtime = { module = 'org.junit.jupiter:junit-jupiter-engine', version.ref = 'junit-jupiter' }
-kotest-assertions = { module = 'io.kotest:kotest-assertions-core', version.ref = 'kotest' }
+kotest-assertions-core = { module = 'io.kotest:kotest-assertions-core', version.ref = 'kotest' }
+kotest-assertions-shared = { module = 'io.kotest:kotest-assertions-shared', version.ref = 'kotest' }
 kotlin-serialisation-json = { module = 'org.jetbrains.kotlinx:kotlinx-serialization-json', version.ref = 'kotlinx-serialization' }
+kotlin-serialisation-core = { module = 'org.jetbrains.kotlinx:kotlinx-serialization-core', version.ref = 'kotlinx-serialization' }
 
 [plugins]
 kotlin-ksp = { id = 'com.google.devtools.ksp', version.ref = 'kotlin-ksp' }

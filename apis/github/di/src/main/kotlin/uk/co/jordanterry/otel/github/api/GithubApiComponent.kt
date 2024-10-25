@@ -5,6 +5,7 @@ import create
 import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.Provides
 import okhttp3.HttpUrl
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import retrofit2.Retrofit
 import uk.co.jordanterry.otel.services.okhttp.OkHttpGraph
 import uk.co.jordanterry.otel.services.retrofit.RetrofitComponent
@@ -28,7 +29,7 @@ public abstract class GithubApiComponent(
 
 @Suppress("FunctionName")
 public fun GithubApiGraph(
-    url: HttpUrl = HttpUrl.parse("https://api.github.com/")!!,
+    url: HttpUrl = "https://api.github.com/".toHttpUrl(),
 ): GithubApiComponent {
     val githubInterceptorComponent = GithubInterceptorComponent::class.create()
     val okHttpComponent = OkHttpGraph(githubInterceptorComponent.interceptors)

@@ -14,7 +14,10 @@ buildConfig {
 
 dependencies {
     api project(':apis:github:api')
-    api(project(':services:retrofit'))
+    api libs.retrofit
+    api platform(libs.okhttp.bom)
+    api libs.okhttp
+    api libs.kotlin.serialisation.core
 
     implementation libs.kotlinx.coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-datetime:0.6.1'
@@ -24,7 +27,7 @@ dependencies {
     testImplementation libs.kotlinx.coroutines.test
     testImplementation libs.junit5.jupiter.api
     testImplementation libs.okhttp.mockwebserver.junit5
-    testImplementation libs.kotest.assertions
+    testImplementation libs.kotest.assertions.core
 
     testRuntimeOnly libs.junit5.jupiter.runtime
 }

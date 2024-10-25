@@ -7,14 +7,17 @@ test {
 }
 
 dependencies {
-    api project(':apis:github:api')
-    api project(':apis:github:internal')
-    api project(':apis:github:di')
+    testImplementation project(':apis:github:api')
+    testImplementation project(':apis:github:di')
 
     testImplementation libs.kotlinx.coroutines.test
     testImplementation libs.junit5.jupiter.api
     testImplementation libs.okhttp.mockwebserver.junit5
-    testImplementation libs.kotest.assertions
+    testImplementation libs.kotest.assertions.core
+    testImplementation libs.kotest.assertions.shared
+    testImplementation platform(libs.okhttp.bom)
+    testImplementation libs.okhttp
+    testImplementation libs.okhttp.mockwebserver
 
     testRuntimeOnly libs.junit5.jupiter.runtime
 }
