@@ -27,7 +27,7 @@ public abstract class GithubApiComponent(
 }
 
 @Suppress("FunctionName")
-public fun GithubComponent(
+public fun GithubApiGraph(
     url: HttpUrl = HttpUrl.parse("https://api.github.com/")!!,
 ): GithubApiComponent {
     val githubInterceptorComponent = GithubInterceptorComponent::class.create()

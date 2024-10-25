@@ -1,13 +1,23 @@
 package uk.co.jordanterry.otel.github.api.dtos
 
-import com.squareup.moshi.JsonClass
+import kotlinx.datetime.Instant
+import kotlinx.datetime.serializers.InstantIso8601Serializer
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 public data class HeadCommit(
-    val id: String?,
-    val treeId: String?,
-    val message: String?,
-    val timestamp: String?, // Instant or OffsetDateTime depending on your needs
-    val author: User?,
-    val committer: User?
+    @SerialName("id")
+    val id: String? = null,
+    @SerialName("tree_id")
+    val treeId: String? = null,
+    @SerialName("message")
+    val message: String? = null,
+    @SerialName("timestamp")
+    @Serializable(with = InstantIso8601Serializer::class)
+    val timestamp: Instant? = null,
+    @SerialName("author")
+    val author: User? = null,
+    @SerialName("committer")
+    val committer: User? = null
 )

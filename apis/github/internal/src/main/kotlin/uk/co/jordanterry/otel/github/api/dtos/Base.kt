@@ -1,8 +1,8 @@
 package uk.co.jordanterry.otel.github.api.dtos
 
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 public data class Base(
     val ref: String,
     val sha: String,

@@ -4,8 +4,7 @@ plugins {
 }
 
 dependencies {
-    api libs.retrofit
-    api libs.moshi.kotlin
+    api libs.kotlin.serialisation.json
 
     implementation libs.kotlin.inject.runtime
 

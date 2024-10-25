@@ -1,10 +1,12 @@
 package uk.co.jordanterry.otel.github.api
 
 import io.kotest.assertions.assertSoftly
+import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import mockwebserver3.MockResponse
 import mockwebserver3.MockWebServer
+import mockwebserver3.SocketPolicy
 import mockwebserver3.junit5.internal.MockWebServerExtension
 import okhttp3.ExperimentalOkHttpApi
 import org.junit.jupiter.api.Test
@@ -16,7 +18,7 @@ class GithubServiceTests(
     private val mockWebServer: MockWebServer,
 ) {
 
-    private val githubComponent: GithubApiComponent = GithubComponent(
+    private val githubComponent: GithubApiComponent = GithubApiGraph(
         url = mockWebServer.url("/")
     )
     private val subject: GithubApi = githubComponent.githubApi
@@ -26,6 +28,11 @@ class GithubServiceTests(
         mockWebServer.enqueue(
             MockResponse().newBuilder()
                 .body(RUNS_RESPONSE)
+                .build()
+        )
+        mockWebServer.enqueue(
+            MockResponse().newBuilder()
+                .body(WORKFLOW_RUN_STEPS)
                 .build()
         )
         val run = subject.run(
@@ -42,6 +49,9 @@ class GithubServiceTests(
 
         assertSoftly {
             run.id shouldBe 11425826679
+            run.jobs shouldHaveSize 2
+            run.jobs[0].steps shouldHaveSize  8
+            run.jobs[1].steps shouldHaveSize 3
         }
     }
 }
@@ -276,3 +286,156 @@ private val RUNS_RESPONSE: String = """
       }
     }
 """.trimIndent()
+
+
+private const val WORKFLOW_RUN_STEPS: String = """
+    {
+  "total_count": 2,
+  "jobs": [
+    {
+      "id": 31787995325,
+      "run_id": 11425826679,
+      "workflow_name": "Deploy Jekyll site to Pages",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/jordanterry/blog/actions/runs/11425826679",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOIvdlM88AAAAHZrZQvQ",
+      "head_sha": "48cedfb9b46556d0b67ce84a9eeed3ad9a628d8d",
+      "url": "https://api.github.com/repos/jordanterry/blog/actions/jobs/31787995325",
+      "html_url": "https://github.com/jordanterry/blog/actions/runs/11425826679/job/31787995325",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2024-10-20T11:11:37Z",
+      "started_at": "2024-10-20T11:11:43Z",
+      "completed_at": "2024-10-20T11:11:55Z",
+      "name": "build",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2024-10-20T11:11:43Z",
+          "completed_at": "2024-10-20T11:11:44Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2024-10-20T11:11:44Z",
+          "completed_at": "2024-10-20T11:11:46Z"
+        },
+        {
+          "name": "Setup Ruby",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2024-10-20T11:11:47Z",
+          "completed_at": "2024-10-20T11:11:50Z"
+        },
+        {
+          "name": "Setup Pages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2024-10-20T11:11:50Z",
+          "completed_at": "2024-10-20T11:11:50Z"
+        },
+        {
+          "name": "Build with Jekyll",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2024-10-20T11:11:50Z",
+          "completed_at": "2024-10-20T11:11:52Z"
+        },
+        {
+          "name": "Upload artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2024-10-20T11:11:52Z",
+          "completed_at": "2024-10-20T11:11:54Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2024-10-20T11:11:55Z",
+          "completed_at": "2024-10-20T11:11:55Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2024-10-20T11:11:54Z",
+          "completed_at": "2024-10-20T11:11:54Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/jordanterry/blog/check-runs/31787995325",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 20,
+      "runner_name": "GitHub Actions 20",
+      "runner_group_id": 2,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 31787998306,
+      "run_id": 11425826679,
+      "workflow_name": "Deploy Jekyll site to Pages",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/jordanterry/blog/actions/runs/11425826679",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOIvdlM88AAAAHZrZcYg",
+      "head_sha": "48cedfb9b46556d0b67ce84a9eeed3ad9a628d8d",
+      "url": "https://api.github.com/repos/jordanterry/blog/actions/jobs/31787998306",
+      "html_url": "https://github.com/jordanterry/blog/actions/runs/11425826679/job/31787998306",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2024-10-20T11:11:57Z",
+      "started_at": "2024-10-20T11:12:05Z",
+      "completed_at": "2024-10-20T11:12:12Z",
+      "name": "deploy",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2024-10-20T11:12:04Z",
+          "completed_at": "2024-10-20T11:12:05Z"
+        },
+        {
+          "name": "Deploy to GitHub Pages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2024-10-20T11:12:05Z",
+          "completed_at": "2024-10-20T11:12:11Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2024-10-20T11:12:11Z",
+          "completed_at": "2024-10-20T11:12:11Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/jordanterry/blog/check-runs/31787998306",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 17,
+      "runner_name": "GitHub Actions 17",
+      "runner_group_id": 2,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}
+"""

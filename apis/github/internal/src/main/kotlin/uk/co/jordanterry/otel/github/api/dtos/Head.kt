@@ -1,10 +1,14 @@
 package uk.co.jordanterry.otel.github.api.dtos
 
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 public data class Head(
+    @SerialName("ref")
     val ref: String,
+    @SerialName("sha")
     val sha: String,
+    @SerialName("repo")
     val repo: Repository
 )

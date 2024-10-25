@@ -17,4 +17,14 @@ public value class Run(public val value: Long)
 
 public data class WorkflowRun(
     val id: Long,
+    val jobs: List<Job>,
+)
+
+public data class Job(
+    val name: String,
+    val steps: List<Step>,
+)
+
+public data class Step(
+    val name: String,
 )

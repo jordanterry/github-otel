@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.gmazzo.build.config)
+    alias(libs.plugins.kotlin.serialisation)
 }
 
 group = 'uk.co.jordanterry'
@@ -16,6 +17,7 @@ dependencies {
     api(project(':services:retrofit'))
 
     implementation libs.kotlinx.coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-datetime:0.6.1'
 
     ksp libs.moshi.kotlin.codegen
 

@@ -1,5 +1,8 @@
 package uk.co.jordanterry.otel.github.api
 
+import uk.co.jordanterry.otel.github.api.dtos.GithubJob
+import uk.co.jordanterry.otel.github.api.dtos.GithubStep
+
 public class DefaultGithubApi(
     private val githubActionsService: GithubActionsService,
 ) : GithubApi {
@@ -7,7 +10,26 @@ public class DefaultGithubApi(
         ownerRepo: OwnerRepo,
         run: Run
     ): WorkflowRun {
-        val workflowRun = githubActionsService.run(ownerRepo, run)
-        return WorkflowRun(workflowRun.id)
+        val workflowRun = githubActionsService
+            .run(ownerRepo, run)
+
+        val githubJobsResponse = githubActionsService
+            .jobsForWorkflowRun(ownerRepo, run)
+
+        return WorkflowRun(
+            id = workflowRun.id,
+            jobs = githubJobsResponse.jobs.map(::Job),
+        )
     }
 }
+
+private fun Step(githubStep: GithubStep): Step =
+    Step(
+        name = githubStep.name,
+    )
+
+private fun Job(githubJob: GithubJob): Job =
+    Job(
+        name = githubJob.name,
+        steps = githubJob.steps.map(::Step)
+    )

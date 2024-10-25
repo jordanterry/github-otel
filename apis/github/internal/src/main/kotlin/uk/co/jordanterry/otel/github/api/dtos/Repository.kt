@@ -1,11 +1,16 @@
 package uk.co.jordanterry.otel.github.api.dtos
 
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 public data class Repository(
+    @SerialName("id")
     val id: Long,
-    val name: String?,
+    @SerialName("name")
+    val name: String? = null,
+    @SerialName("full_name")
     val fullName: String? = null,
+    @SerialName("owner")
     val owner: User,
 )

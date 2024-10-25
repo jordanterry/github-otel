@@ -1,4 +1,4 @@
-package uk.co.jordanterry.otel.github.api
+package uk.co.jordanterry.otel.github.api.interceptors
 
 import okhttp3.Interceptor
 import uk.co.jordanterry.internal.BuildConfig

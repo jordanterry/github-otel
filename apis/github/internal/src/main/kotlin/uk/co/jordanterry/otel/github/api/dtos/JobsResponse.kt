@@ -4,7 +4,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public data class User(
-    @SerialName("login")
-    val login: String? = null,
+public data class JobsResponse(
+    @SerialName("total_count")
+    val totalCount: Int,
+    @SerialName("jobs")
+    val jobs: List<GithubJob>,
 )

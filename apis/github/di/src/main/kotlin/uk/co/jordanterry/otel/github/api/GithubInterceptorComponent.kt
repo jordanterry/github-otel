@@ -2,9 +2,9 @@ import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.IntoSet
 import me.tatarka.inject.annotations.Provides
 import okhttp3.Interceptor
-import uk.co.jordanterry.otel.github.api.AcceptGithubJsonInterceptor
-import uk.co.jordanterry.otel.github.api.GithubApiVersionInterceptor
-import uk.co.jordanterry.otel.github.api.GithubAuthorizationInterceptor
+import uk.co.jordanterry.otel.github.api.interceptors.AcceptGithubJsonInterceptor
+import uk.co.jordanterry.otel.github.api.interceptors.GithubApiVersionInterceptor
+import uk.co.jordanterry.otel.github.api.interceptors.GithubAuthorizationInterceptor
 
 @Component
 public abstract class GithubInterceptorComponent {

@@ -1,24 +1,21 @@
 package uk.co.jordanterry.otel.services.retrofit
 
-import com.squareup.moshi.Moshi
+import kotlinx.serialization.json.Json
 import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.Provides
 import okhttp3.HttpUrl
-import okhttp3.Interceptor
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import uk.co.jordanterry.otel.services.moshi.MoshiComponent
-import uk.co.jordanterry.otel.services.moshi.MoshiGraph
+import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import uk.co.jordanterry.otel.services.moshi.JsonSerializationComponent
+import uk.co.jordanterry.otel.services.moshi.JsonSerializationGraph
 import uk.co.jordanterry.otel.services.okhttp.OkHttpComponent
 import uk.co.jordanterry.otel.services.okhttp.OkHttpGraph
 
-
-internal typealias RetrofitBaseUrl = String
-
 @Component
 public abstract class RetrofitComponent(
-    @Component public val moshiComponent: MoshiComponent,
+    @Component public val jsonSerializationComponent: JsonSerializationComponent,
     @Component public val okHttpComponent: OkHttpComponent,
     @get:Provides public val retrofitUrl: HttpUrl,
 ) {
@@ -26,22 +23,25 @@ public abstract class RetrofitComponent(
     @Provides
     public fun retrofit(
         okHttpClient: OkHttpClient,
-        moshi: Moshi,
+        json: Json,
         retrofitBaseUrl: HttpUrl,
     ): Retrofit =
         Retrofit.Builder()
             .baseUrl(retrofitBaseUrl)
             .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(
+                json.asConverterFactory("application/json; charset=UTF8".toMediaType())
+            )
             .build()
 
 }
 
+@Suppress("FunctionName")
 public fun RetrofitGraph(
-    moshiComponent: MoshiComponent = MoshiGraph(),
+    jsonComponent: JsonSerializationComponent = JsonSerializationGraph(),
     okHttpComponent: OkHttpComponent = OkHttpGraph(),
     url: HttpUrl,
 ): RetrofitComponent =
     RetrofitComponent::class.create(
-        moshiComponent, okHttpComponent, url
+        jsonComponent, okHttpComponent, url
     )

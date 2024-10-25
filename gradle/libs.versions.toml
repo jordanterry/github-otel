@@ -12,12 +12,14 @@ gmazzo-buildconfig = '5.5.0'
 kotest = '5.9.0'
 build-health = '2.2.0'
 foojay-resolver = '0.8.0'
+kotlinx-serialization = '1.7.3'
 
 [libraries]
 moshi-kotlin = { module = 'com.squareup.moshi:moshi-kotlin', version.ref = 'moshi' }
 moshi-kotlin-codegen = { module = 'com.squareup.moshi:moshi-kotlin-codegen', version.ref = 'moshi' }
 retrofit = { module = 'com.squareup.retrofit2:retrofit', version.ref = 'retrofit' }
 retrofit-moshi = { module = 'com.squareup.retrofit2:converter-moshi', version.ref = 'retrofit' }
+retrofit-kotlin-serialization = { module = 'com.squareup.retrofit2:converter-kotlinx-serialization', version.ref = 'retrofit' }
 kotlin-inject-runtime = { module = 'me.tatarka.inject:kotlin-inject-runtime', version.ref = 'kotlin-inject' }
 kotlin-inject-compiler = { module = 'me.tatarka.inject:kotlin-inject-compiler-ksp', version.ref = 'kotlin-inject' }
 kotlinx-coroutines = { module = 'org.jetbrains.kotlinx:kotlinx-coroutines-core', version.ref = 'kotlinx-coroutines' }
@@ -29,10 +31,12 @@ kotlinx-coroutines-test = { module = 'org.jetbrains.kotlinx:kotlinx-coroutines-t
 junit5-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api', version.ref = 'junit-jupiter' }
 junit5-jupiter-runtime = { module = 'org.junit.jupiter:junit-jupiter-engine', version.ref = 'junit-jupiter' }
 kotest-assertions = { module = 'io.kotest:kotest-assertions-core', version.ref = 'kotest' }
+kotlin-serialisation-json = { module = 'org.jetbrains.kotlinx:kotlinx-serialization-json', version.ref = 'kotlinx-serialization' }
 
 [plugins]
 kotlin-ksp = { id = 'com.google.devtools.ksp', version.ref = 'kotlin-ksp' }
 kotlin-jvm = { id = 'org.jetbrains.kotlin.jvm', version.ref = 'kotlin' }
+kotlin-serialisation = { id = 'org.jetbrains.kotlin.plugin.serialization', version.ref = 'kotlin' }
 gmazzo-build-config = { id = 'com.github.gmazzo.buildconfig', version.ref = 'gmazzo-buildconfig' }
 build-health = { id = 'com.autonomousapps.build-health', version.ref = 'build-health' }
 foojay-resolver = { id = 'org.gradle.toolchains.foojay-resolver-convention', version.ref = 'foojay-resolver' }
