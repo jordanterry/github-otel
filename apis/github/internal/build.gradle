@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.gmazzo.build.config)
     alias(libs.plugins.kotlin.serialisation)
+    alias(libs.plugins.sort.dependencies)
 }
 
 group = 'uk.co.jordanterry'
@@ -13,23 +14,23 @@ buildConfig {
 }
 
 dependencies {
-    api project(':apis:github:api')
-    api libs.retrofit
     api platform(libs.okhttp.bom)
-    api libs.okhttp
+    api project(':apis:github:api')
     api libs.kotlin.serialisation.core
+    api libs.okhttp
+    api libs.retrofit
 
-    implementation libs.kotlinx.coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-datetime:0.6.1'
+    implementation libs.kotlinx.coroutines
 
-    ksp libs.moshi.kotlin.codegen
-
-    testImplementation libs.kotlinx.coroutines.test
     testImplementation libs.junit5.jupiter.api
-    testImplementation libs.okhttp.mockwebserver.junit5
     testImplementation libs.kotest.assertions.core
+    testImplementation libs.kotlinx.coroutines.test
+    testImplementation libs.okhttp.mockwebserver.junit5
 
     testRuntimeOnly libs.junit5.jupiter.runtime
+
+    ksp libs.moshi.kotlin.codegen
 }
 
 test {

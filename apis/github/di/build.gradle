@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.sort.dependencies)
 }
 
 kotlin {
@@ -8,18 +9,17 @@ kotlin {
 }
 
 dependencies {
-    api project(':services:retrofit')
-    api project(':apis:github:internal')
-    api project(':apis:github:api')
     api platform(libs.okhttp.bom)
+    api project(':apis:github:api')
+    api project(':apis:github:internal')
+    api project(':services:retrofit')
     api libs.okhttp
 
-    implementation project(':services:okhttp')
     implementation project(':services:kotlinx-serialization')
-
-    implementation libs.retrofit
+    implementation project(':services:okhttp')
     implementation libs.kotlin.inject.runtime
     implementation libs.kotlin.serialisation.json
+    implementation libs.retrofit
 
     ksp libs.kotlin.inject.compiler
 }

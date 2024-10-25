@@ -13,6 +13,7 @@ kotest = '5.9.0'
 build-health = '2.2.0'
 foojay-resolver = '0.8.0'
 kotlinx-serialization = '1.7.3'
+sort-dependencies = '0.10'
 
 [libraries]
 moshi = { module = 'com.squareup.moshi:moshi', version.ref = 'moshi' }
@@ -44,3 +45,4 @@ kotlin-serialisation = { id = 'org.jetbrains.kotlin.plugin.serialization', versi
 gmazzo-build-config = { id = 'com.github.gmazzo.buildconfig', version.ref = 'gmazzo-buildconfig' }
 build-health = { id = 'com.autonomousapps.build-health', version.ref = 'build-health' }
 foojay-resolver = { id = 'org.gradle.toolchains.foojay-resolver-convention', version.ref = 'foojay-resolver' }
+sort-dependencies = { id = 'com.squareup.sort-dependencies', version.ref = 'sort-dependencies' }
