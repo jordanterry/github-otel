@@ -16,7 +16,6 @@
             <option value="$PROJECT_DIR$/apis/github/internal" />
             <option value="$PROJECT_DIR$/services" />
             <option value="$PROJECT_DIR$/services/kotlinx-serialization" />
-            <option value="$PROJECT_DIR$/services/moshi" />
             <option value="$PROJECT_DIR$/services/okhttp" />
             <option value="$PROJECT_DIR$/services/retrofit" />
           </set>
