@@ -14,6 +14,7 @@ build-health = '2.2.0'
 foojay-resolver = '0.8.0'
 kotlinx-serialization = '1.7.3'
 sort-dependencies = '0.10'
+kotlinx-datetime = '0.6.1'
 
 [libraries]
 moshi = { module = 'com.squareup.moshi:moshi', version.ref = 'moshi' }
@@ -37,6 +38,8 @@ kotest-assertions-core = { module = 'io.kotest:kotest-assertions-core', version.
 kotest-assertions-shared = { module = 'io.kotest:kotest-assertions-shared', version.ref = 'kotest' }
 kotlin-serialisation-json = { module = 'org.jetbrains.kotlinx:kotlinx-serialization-json', version.ref = 'kotlinx-serialization' }
 kotlin-serialisation-core = { module = 'org.jetbrains.kotlinx:kotlinx-serialization-core', version.ref = 'kotlinx-serialization' }
+kotlinx-datetime = { module = 'org.jetbrains.kotlinx:kotlinx-datetime', version.ref = 'kotlinx-datetime' }
+
 
 [plugins]
 kotlin-ksp = { id = 'com.google.devtools.ksp', version.ref = 'kotlin-ksp' }

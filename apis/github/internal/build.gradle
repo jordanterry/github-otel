@@ -15,13 +15,13 @@ buildConfig {
 
 dependencies {
     api platform(libs.okhttp.bom)
-    api project(':apis:github:api')
     api libs.kotlin.serialisation.core
     api libs.okhttp
     api libs.retrofit
+    api projects.apis.github.api
 
-    implementation 'org.jetbrains.kotlinx:kotlinx-datetime:0.6.1'
     implementation libs.kotlinx.coroutines
+    implementation libs.kotlinx.datetime
 
     testImplementation libs.junit5.jupiter.api
     testImplementation libs.kotest.assertions.core

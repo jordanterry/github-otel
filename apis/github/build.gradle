@@ -7,8 +7,8 @@ test {
 }
 
 dependencies {
-    testImplementation project(':apis:github:api')
-    testImplementation project(':apis:github:di')
+    testImplementation projects.apis.github.api
+    testImplementation projects.apis.github.di
 
     testImplementation libs.kotlinx.coroutines.test
     testImplementation libs.junit5.jupiter.api

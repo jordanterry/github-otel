@@ -9,10 +9,10 @@ kotlin {
 }
 
 dependencies {
-    api project(':services:kotlinx-serialization')
-    api project(':services:okhttp')
     api libs.kotlin.serialisation.json
     api libs.retrofit
+    api projects.services.kotlinxSerialization
+    api projects.services.okhttp
 
     implementation platform(libs.okhttp.bom)
     implementation libs.kotlin.inject.runtime
