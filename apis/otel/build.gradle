@@ -13,7 +13,7 @@ dependencies {
     implementation 'io.opentelemetry:opentelemetry-sdk'
     implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
     implementation 'io.opentelemetry:opentelemetry-exporter-sender-okhttp'
-    implementation 'io.opentelemetry:opentelemetry-exporter-logging'
+    implementation("io.opentelemetry:opentelemetry-exporter-logging")
 
     testImplementation projects.apis.github.api
     testImplementation projects.apis.github.di

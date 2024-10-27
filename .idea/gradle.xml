@@ -14,6 +14,10 @@
             <option value="$PROJECT_DIR$/apis/github/api" />
             <option value="$PROJECT_DIR$/apis/github/di" />
             <option value="$PROJECT_DIR$/apis/github/internal" />
+            <option value="$PROJECT_DIR$/apis/otel" />
+            <option value="$PROJECT_DIR$/apis/otel/api" />
+            <option value="$PROJECT_DIR$/apis/otel/di" />
+            <option value="$PROJECT_DIR$/apis/otel/internal" />
             <option value="$PROJECT_DIR$/services" />
             <option value="$PROJECT_DIR$/services/kotlinx-serialization" />
             <option value="$PROJECT_DIR$/services/okhttp" />

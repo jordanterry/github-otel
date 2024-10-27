@@ -3,14 +3,34 @@ package uk.co.jordanterry.otel.github.api
 import io.kotest.assertions.assertSoftly
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
+import io.opentelemetry.api.OpenTelemetry
+import io.opentelemetry.api.common.AttributeKey
+import io.opentelemetry.api.common.Attributes
+import io.opentelemetry.api.trace.Span
+import io.opentelemetry.api.trace.SpanKind
+import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator
+import io.opentelemetry.context.Context
+import io.opentelemetry.context.propagation.ContextPropagators
+import io.opentelemetry.exporter.logging.LoggingSpanExporter
+import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter
+import io.opentelemetry.sdk.OpenTelemetrySdk
+import io.opentelemetry.sdk.resources.Resource
+import io.opentelemetry.sdk.trace.SdkTracerProvider
+import io.opentelemetry.sdk.trace.export.BatchSpanProcessor
+import io.opentelemetry.sdk.trace.export.SimpleSpanProcessor
 import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.toJavaInstant
 import mockwebserver3.MockResponse
 import mockwebserver3.MockWebServer
-import mockwebserver3.SocketPolicy
 import mockwebserver3.junit5.internal.MockWebServerExtension
 import okhttp3.ExperimentalOkHttpApi
+import org.intellij.lang.annotations.Language
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import java.util.concurrent.TimeUnit
+
+
+
 
 @OptIn(ExperimentalOkHttpApi::class)
 @ExtendWith(MockWebServerExtension::class)
@@ -56,6 +76,9 @@ class GithubServiceTests(
     }
 }
 
+
+
+@Language("JSON")
 private val RUNS_RESPONSE: String = """
     {
       "id": 11425826679,
@@ -288,6 +311,7 @@ private val RUNS_RESPONSE: String = """
 """.trimIndent()
 
 
+@Language("JSON")
 private const val WORKFLOW_RUN_STEPS: String = """
     {
   "total_count": 2,

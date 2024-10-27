@@ -20,5 +20,10 @@ public data class GithubJob(
     @Serializable(
         with = InstantIso8601Serializer::class
     )
+    val createdAt: Instant,
+    @SerialName("completed_at")
+    @Serializable(
+        with = InstantIso8601Serializer::class
+    )
     val completedAt: Instant,
 )

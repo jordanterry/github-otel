@@ -14,7 +14,7 @@ public data class GithubStep(
         with = InstantIso8601Serializer::class
     )
     val startedAt: Instant? = null,
-    @SerialName("created_at")
+    @SerialName("completed_at")
     @Serializable(
         with = InstantIso8601Serializer::class
     )

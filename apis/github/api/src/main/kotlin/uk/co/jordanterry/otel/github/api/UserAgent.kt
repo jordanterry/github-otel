@@ -1,5 +1,7 @@
 package uk.co.jordanterry.otel.github.api
 
+import kotlinx.datetime.Instant
+
 @JvmInline
 public value class Owner(public val value: String)
 
@@ -17,14 +19,21 @@ public value class Run(public val value: Long)
 
 public data class WorkflowRun(
     val id: Long,
+    val name: String,
+    val startedAt: Instant,
+    val endedAt: Instant,
     val jobs: List<Job>,
 )
 
 public data class Job(
     val name: String,
+    val startedAt: Instant,
+    val endedAt: Instant,
     val steps: List<Step>,
 )
 
 public data class Step(
     val name: String,
+    val startedAt: Instant? = null,
+    val endedAt: Instant? = null,
 )

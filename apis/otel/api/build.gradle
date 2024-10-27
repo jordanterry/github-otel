@@ -8,5 +8,5 @@ kotlin {
 }
 
 dependencies {
-    api libs.kotlinx.datetime
+    api projects.apis.github.api
 }

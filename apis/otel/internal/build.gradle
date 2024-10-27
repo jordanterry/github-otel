@@ -1,0 +1,25 @@
+plugins {
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.sort.dependencies)
+}
+
+kotlin {
+    explicitApi()
+}
+
+dependencies {
+    api projects.apis.otel.api
+    api platform(libs.otel.bom)
+    api libs.otel.api
+    api libs.otel.sdk
+
+    implementation libs.otel.exporter.otlp
+    implementation libs.otel.exporter.logging
+
+    testImplementation libs.kotlinx.coroutines.test
+    testImplementation libs.junit5.jupiter.api
+    testImplementation libs.kotest.assertions.core
+    testImplementation libs.kotest.assertions.shared
+
+    testRuntimeOnly libs.junit5.jupiter.runtime
+}

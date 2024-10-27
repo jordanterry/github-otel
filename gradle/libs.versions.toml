@@ -15,6 +15,7 @@ foojay-resolver = '0.8.0'
 kotlinx-serialization = '1.7.3'
 sort-dependencies = '0.10'
 kotlinx-datetime = '0.6.1'
+otel = '1.43.0'
 
 [libraries]
 moshi = { module = 'com.squareup.moshi:moshi', version.ref = 'moshi' }
@@ -40,6 +41,11 @@ kotlin-serialisation-json = { module = 'org.jetbrains.kotlinx:kotlinx-serializat
 kotlin-serialisation-core = { module = 'org.jetbrains.kotlinx:kotlinx-serialization-core', version.ref = 'kotlinx-serialization' }
 kotlinx-datetime = { module = 'org.jetbrains.kotlinx:kotlinx-datetime', version.ref = 'kotlinx-datetime' }
 
+otel-bom = { module = 'io.opentelemetry:opentelemetry-bom', version.ref = 'otel' }
+otel-api = { module = 'io.opentelemetry:opentelemetry-api' }
+otel-sdk = { module = 'io.opentelemetry:opentelemetry-sdk' }
+otel-exporter-otlp = { module = 'io.opentelemetry:opentelemetry-exporter-otlp' }
+otel-exporter-logging = { module = 'io.opentelemetry:opentelemetry-exporter-logging' }
 
 [plugins]
 kotlin-ksp = { id = 'com.google.devtools.ksp', version.ref = 'kotlin-ksp' }
