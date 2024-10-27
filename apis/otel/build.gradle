@@ -6,26 +6,3 @@ test {
     useJUnitPlatform()
 }
 
-dependencies {
-
-    implementation platform("io.opentelemetry:opentelemetry-bom:1.43.0")
-    implementation 'io.opentelemetry:opentelemetry-api'
-    implementation 'io.opentelemetry:opentelemetry-sdk'
-    implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
-    implementation 'io.opentelemetry:opentelemetry-exporter-sender-okhttp'
-    implementation("io.opentelemetry:opentelemetry-exporter-logging")
-
-    testImplementation projects.apis.github.api
-    testImplementation projects.apis.github.di
-
-    testImplementation libs.kotlinx.coroutines.test
-    testImplementation libs.junit5.jupiter.api
-    testImplementation libs.okhttp.mockwebserver.junit5
-    testImplementation libs.kotest.assertions.core
-    testImplementation libs.kotest.assertions.shared
-    testImplementation platform(libs.okhttp.bom)
-    testImplementation libs.okhttp
-    testImplementation libs.okhttp.mockwebserver
-
-    testRuntimeOnly libs.junit5.jupiter.runtime
-}

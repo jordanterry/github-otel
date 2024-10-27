@@ -1,0 +1,13 @@
+plugins {
+    alias(libs.plugins.kotlin.jvm)
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    api projects.apis.otel.di
+    api projects.apis.github.di
+    implementation libs.kotlinx.coroutines
+}

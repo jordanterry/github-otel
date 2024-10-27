@@ -1,12 +1,12 @@
 package uk.co.jordanterry.otel.otel
 
-import io.opentelemetry.api.OpenTelemetry
 import io.opentelemetry.sdk.OpenTelemetrySdk
 import kotlinx.datetime.Clock
 import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.Provides
+import uk.co.jordanterry.otel.github.api.Repo
+import uk.co.jordanterry.otel.github.api.RunStatus
 import uk.co.jordanterry.otel.github.api.WorkflowRun
-import java.time.ZonedDateTime
 import kotlin.time.Duration.Companion.minutes
 
 @Component
@@ -17,10 +17,20 @@ public abstract class OtelComponent(
     @Provides
     public fun provideOtelReporter(
         openTelemetry: OpenTelemetrySdk,
-    ): OtelReporter =
-        DefaultOtelReporter(openTelemetry)
+    ): OtelWorkflowRunReporter =
+        DefaultOtelWorkflowRunReporter(openTelemetry)
 
-    public abstract val otelReporter: OtelReporter
+    public abstract val otelWorkflowRunReporter: OtelWorkflowRunReporter
+}
+
+@Suppress("FunctionName")
+public fun OtelGraph(
+    otelEndpoint: String,
+): OtelComponent {
+    val otelConfigurationComponent = OtelConfigurationComponent::class.create(otelEndpoint)
+    return OtelComponent::class.create(
+        otelConfigurationComponent,
+    )
 }
 
 public fun main() {
@@ -29,7 +39,7 @@ public fun main() {
         otelConfigurationComponent
     )
 
-    val otelReporter = otelComponent.otelReporter
+    val otelReporter = otelComponent.otelWorkflowRunReporter
 
     otelReporter.report(
         WorkflowRun(
@@ -37,9 +47,11 @@ public fun main() {
             name = "here is a test",
             startedAt = Clock.System.now(),
             endedAt = Clock.System.now() + 5.minutes,
-            jobs = emptyList()
+            jobs = emptyList(),
+            repo = Repo("jordanterry/blog"),
+            status = RunStatus.Success,
         )
     )
 
-    println(otelComponent.otelReporter)
+    println(otelComponent.otelWorkflowRunReporter)
 }

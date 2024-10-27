@@ -18,6 +18,8 @@
             <option value="$PROJECT_DIR$/apis/otel/api" />
             <option value="$PROJECT_DIR$/apis/otel/di" />
             <option value="$PROJECT_DIR$/apis/otel/internal" />
+            <option value="$PROJECT_DIR$/apps" />
+            <option value="$PROJECT_DIR$/apps/cli" />
             <option value="$PROJECT_DIR$/services" />
             <option value="$PROJECT_DIR$/services/kotlinx-serialization" />
             <option value="$PROJECT_DIR$/services/okhttp" />

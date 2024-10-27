@@ -26,4 +26,6 @@ public data class GithubJob(
         with = InstantIso8601Serializer::class
     )
     val completedAt: Instant,
+    @SerialName("conclusion")
+    val conclusion: String? = null,
 )

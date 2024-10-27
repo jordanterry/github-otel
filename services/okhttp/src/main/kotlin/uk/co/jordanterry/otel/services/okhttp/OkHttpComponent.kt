@@ -28,7 +28,7 @@ public abstract class OkHttpComponent(
     @IntoSet
     @Provides
     internal fun provideLoggingInterceptor(): Interceptor =
-        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
     @Provides
     public fun provideOkHttpClient(

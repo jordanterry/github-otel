@@ -19,9 +19,11 @@ public value class Run(public val value: Long)
 
 public data class WorkflowRun(
     val id: Long,
+    val repo: Repo,
     val name: String,
     val startedAt: Instant,
     val endedAt: Instant,
+    val status: RunStatus,
     val jobs: List<Job>,
 )
 
@@ -29,6 +31,7 @@ public data class Job(
     val name: String,
     val startedAt: Instant,
     val endedAt: Instant,
+    val status: RunStatus,
     val steps: List<Step>,
 )
 
@@ -36,4 +39,9 @@ public data class Step(
     val name: String,
     val startedAt: Instant? = null,
     val endedAt: Instant? = null,
+    val status: RunStatus,
 )
+
+public enum class RunStatus {
+    Success, Failure, Unknown, Skipped, Cancelled;
+}

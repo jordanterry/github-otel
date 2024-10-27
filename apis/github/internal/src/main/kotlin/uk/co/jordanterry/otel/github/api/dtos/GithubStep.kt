@@ -19,4 +19,6 @@ public data class GithubStep(
         with = InstantIso8601Serializer::class
     )
     val completedAt: Instant? = null,
+    @SerialName("conclusion")
+    val conclusion: String? = null,
 )

@@ -8,9 +8,9 @@ public data class Repository(
     @SerialName("id")
     val id: Long,
     @SerialName("name")
-    val name: String? = null,
+    val name: String,
     @SerialName("full_name")
     val fullName: String? = null,
     @SerialName("owner")
-    val owner: User,
+    val owner: User? = null,
 )
